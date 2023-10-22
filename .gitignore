@@ -10,6 +10,9 @@ __pycache__/
 *.log
 *.swp
 
+# .gitignore file 
+*.gitignore
+
 # IDE/Editor-Specific Files
 .vscode/  # Visual Studio Code
 
