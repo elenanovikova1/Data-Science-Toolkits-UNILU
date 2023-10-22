@@ -1,0 +1,29 @@
+# Python Virtual Environment
+venv/
+virtualenv/
+
+# Compiled Python Files
+*.pyc
+__pycache__/
+
+# Log Files and Temporary Files
+*.log
+*.swp
+
+# IDE/Editor-Specific Files
+.vscode/  # Visual Studio Code
+
+# Operating System and Environment-Specific Files
+.DS_Store  # macOS
+
+# Environment Configuration Files
+.env
+config.py
+
+# Build Output and Temporary Directories
+build/
+dist/
+temp/
+
+# Generated Documentation
+docs/
