@@ -1,3 +1,7 @@
+##Milestone 01
+
+###Question 01 
+
 **1) Problem and Dataset Description**
 
 - **About the Dataset**: The dataset consists of 70,000 images (60,000 in 
