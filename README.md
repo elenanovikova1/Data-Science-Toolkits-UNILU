@@ -18,7 +18,7 @@ $ pip install tensorflow-macos
 
 ## Dependencies 
 
-For complete list please refer to GitHub [Tensorflow.org](https://www.tensorflow.org/install/source).
+For complete list please refer to [Tensorflow.org](https://www.tensorflow.org/install/source).
 
 ### Python 
 
