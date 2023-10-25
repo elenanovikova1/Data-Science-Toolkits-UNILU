@@ -19,15 +19,17 @@ Accelerator: GPU
 ## Setup
 """
 
-import numpy as np
-from tensorflow import keras
-from tensorflow.keras import layers
 
 """
 ## Prepare the data
 """
 
-# Model / data parameters
+
+import numpy as np
+from tensorflow import keras
+from tensorflow.keras import layers
+
+# Model / data parametersh
 num_classes = 10
 input_shape = (28, 28, 1)
 
