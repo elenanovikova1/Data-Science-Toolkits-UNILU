@@ -1,4 +1,4 @@
-#Group Project DSDA 
+# Group Project DSDA 
 
 ## Install 
 
@@ -16,7 +16,7 @@ $ pip install tensorflow-macos
 ```
 
 
-##Dependencies 
+## Dependencies 
 
 ### Python 
 
