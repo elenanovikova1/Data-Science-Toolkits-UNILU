@@ -2,14 +2,14 @@
 
 ## Install 
 
-To run the program the following packages have to be installed: 
+To run the programme, the following packages must be installed:
 
 ```
 $ pip install tensorflow
 $ pip install numpy 
 ```
 
-To run the program on macOS M1/M2 also the following package is required:
+To run the programme under macOS M1/M2, the special package for macOS is required:
 
 ```
 $ pip install tensorflow-macos 
