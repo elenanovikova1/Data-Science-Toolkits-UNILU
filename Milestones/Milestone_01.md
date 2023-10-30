@@ -24,10 +24,10 @@ value. The dataset's structure includes x_train with a shape of (60000,
 
 ### Question 04 
 
-- **Pyhton versions and dependencies**: Are listed in the README.md
+**Pyhton versions and dependencies**: Are listed in the README.md  
 Systems where the code has been tested:
-- macOS
-- Linux ubuntu
+* macOS
+* Linux ubuntu
 
 On macOS the code didn't run at first - need to install tensorflow-macos first. 
 
@@ -35,7 +35,7 @@ Solution: docker for the different systems?
 
 ### Question 05
 
-**Explain the code*
+*Explain the code*
 
 **Dependencies**
 ```
@@ -52,9 +52,9 @@ num_classes = 10
 input_shape = (28, 28, 1)
 ```
 
-Specifies the parameters of the model.
+Specifies the parameters of the model. 
 num_classes: number of classes in the classification problem. E.g. 10 for the different digits 
-input_shape: specifies the shape of the input data - in this case image with dimension 28 x 28 pixels with 1 channel (grayscales only)
+input_shape: specifies the shape of the input data - in this case image with dimension 28 x 28 pixels with 1 channel (grayscales only) 
 
 **Loading data**
 ```
@@ -77,7 +77,7 @@ print("x_train shape:", x_train.shape)
 print(x_train.shape[0], "train samples")
 print(x_test.shape[0], "test samples")
 ```
-Reshapes the input data - the numpy function expand_dims adds on an additional dimension at the last position (-1) of the array. The dimension is for keras to know the number of channels. In this case 1 for grayscales. 
+Reshapes the input data - the numpy function expand_dims adds on an additional dimension at the last position (-1) of the array. The dimension is for keras to know the number of channels. In this case 1 for grayscales.  
 Prints the shape of the x_train and x_test data to the check the correct dimension of the training data (28, 28, 1) and number of training and test datasets (60,000 and 10,000). 
 
 ```
@@ -104,16 +104,16 @@ model = keras.Sequential(
 
 model.summary()
 ```
-Model applied: Convolutional Neural Network with different layers (CNN).
-Keras is the API to use Tensorflow (computational backend for deep learning). 
+Model applied: Convolutional Neural Network with different layers (CNN). 
+Keras is the API to use Tensorflow (computational backend for deep learning).  
 CNN is a neural network architecture where the model is feature engineering itself and finding patterns in the images. 
 
-Layers applied:
-- Convolutional layer: Convolutional layers are used to detect patterns and features in images.
-- Pooling Layer: Max-pooling is used to use the highest values of the feature map as input for the next layer 
-- Flatten: 
-- Dropout: This adds a dropout layer with a dropout rate of 0.5. Dropout is a technique to prevent overfitting by randomly "dropping out" some neurons during training.
-- Dense: Output layer 
+Layers applied: 
+* Convolutional layer: Convolutional layers are used to detect patterns and features in images. 
+* Pooling Layer: Max-pooling is used to use the highest values of the feature map as input for the next layer  
+* Flatten:  
+* Dropout: This adds a dropout layer with a dropout rate of 0.5. Dropout is a technique to prevent overfitting by randomly "dropping out" some neurons during training. 
+* Dense: Output layer  
 
 Input: Grayscale images of handwritten digits with dimension (28, 28, 1).
 Output: The output of the model is a probability distribution over the classes (10 classes representing the different digits). Therefore the highest probability value determines the predicted class/cathegory for that input image.
