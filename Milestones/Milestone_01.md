@@ -22,7 +22,7 @@ they have a 28x28 grid of pixels, with each pixel having a grayscale
 value. The dataset's structure includes x_train with a shape of (60000, 
 28, 28, 1).
 
-### Question 4 
+### Question 04 
 
 - **Pyhton versions and dependencies**: Are listed in the README.md
 Systems where the code has been tested:
@@ -33,7 +33,7 @@ On macOS the code didn't run at first - need to install tensorflow-macos first.
 
 Solution: docker for the different systems? 
 
-### Question 5
+### Question 05
 
 **Explain the code*
 
@@ -78,13 +78,13 @@ print(x_train.shape[0], "train samples")
 print(x_test.shape[0], "test samples")
 ```
 Reshapes the input data - the numpy function expand_dims adds on an additional dimension at the last position (-1) of the array. The dimension is for keras to know the number of channels. In this case 1 for grayscales. 
-Prints the shape of the x_train and x_test data to the correct dimension of the training data (28, 28, 1) and number of train and test datasets (60,000 and 10,000). 
+Prints the shape of the x_train and x_test data to the check the correct dimension of the training data (28, 28, 1) and number of training and test datasets (60,000 and 10,000). 
 
 ```
 y_train = keras.utils.to_categorical(y_train, num_classes)
 y_test = keras.utils.to_categorical(y_test, num_classes)
 ```
-Pre-processing of prediction data y. Converts a class vector (integers) to binary class matrix with the predefined number of classes: 10. 
+Pre-processing of label y. Converts a class vector (integers) to binary class matrix with the predefined number of classes: 10. (Required input format for Keras) 
 
 
 **Build model**
@@ -105,17 +105,18 @@ model = keras.Sequential(
 model.summary()
 ```
 Model applied: Convolutional Neural Network with different layers (CNN).
-Method where the model is feature engineering itself and finding patterns in the images. 
+Keras is the API to use Tensorflow (computational backend for deep learning). 
+CNN is a neural network architecture where the model is feature engineering itself and finding patterns in the images. 
 
 Layers applied:
 - Convolutional layer: Convolutional layers are used to detect patterns and features in images.
-- Pooling Layer: Max-pooling is used to reduce the dimensions of the feature maps obtained from the convolutional layers.
+- Pooling Layer: Max-pooling is used to use the highest values of the feature map as input for the next layer 
 - Flatten: 
-- Dropout: This adds a dropout layer with a dropout rate of 0.5. Dropout is a regularization technique used to prevent overfitting by randomly "dropping out" some neurons during training.
-- Dense: output layer 
+- Dropout: This adds a dropout layer with a dropout rate of 0.5. Dropout is a technique to prevent overfitting by randomly "dropping out" some neurons during training.
+- Dense: Output layer 
 
-Input: Grayscale images of handwritten digits with demension (28, 28, 1) 
-Output: The output of the model is a probability distribution over the classes (10 classes representing the different digits) 
+Input: Grayscale images of handwritten digits with dimension (28, 28, 1).
+Output: The output of the model is a probability distribution over the classes (10 classes representing the different digits). Therefore the highest probability value determines the predicted class/cathegory for that input image.
 
 ```
 model.summary()
@@ -140,7 +141,7 @@ score = model.evaluate(x_test, y_test, verbose=0)
 print("Test loss:", score[0])
 print("Test accuracy:", score[1])
 ```
-Prints loss and accuracy of model. 
+Prints loss and accuracy of model tested on the test set. 
 
 
 
