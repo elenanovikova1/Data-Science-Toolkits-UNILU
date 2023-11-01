@@ -33,6 +33,8 @@ Hash of the commit can be found in the history of the commits on the github.
 
 During our testing we have also spotted that the file was also deleted from the local machine, not only from the repository.
 
+We also blocked all direct pushed to the main branch using Settings on the Github (Settings -> General -> Branches -> Branch protection rule -> Tick boxes "Require a pull request before merging" and "Require approvals" -> Save changes). 
+
 ### Question 04
 
 - **Step necessary to run the code**:
@@ -48,15 +50,31 @@ During our testing we have also spotted that the file was also deleted from the 
 		- Using PyCharm IDE: it highlights the missing libraries, do right click and proceed with intallation (Elena did this option and it worked out smoothly)
 		- Using terminal: using a command "$ pip install" + "name of the library"
 - **Versions are being used to run the code (python version and all
-dependencies)**: Are listed in the README.md. Systems where the code has been tested:
-	 * macOS
-	 * Linux ubuntu
+dependencies)**: General requirements are listed in the README.md. During testing we had different experience due to different versions of the software on our machines.
 
-On macOS the code didn't run at first - need to install tensorflow-macos first. 
+	####Florian:
 
-Solution: docker for the different systems?
+		Systems where the code has been tested:
+	 	* macOS
+	 	* Linux ubuntu
+	 	On macOS the code didn't run at first - need to install tensorflow-macos first.
+	 	Solution: docker for the different systems?
+
+	####Elena:
+
+		Systems where the code has been tested:
+	 	* macOS
+	 	* Python version: 3.8
+	 	* Tensorflow version: 2.14.0
+	 	* Keras version (the same as tensorflow): 2.14.0
+	 	* Layers verion: 0.1.5
+	 	* Numpy vesrion: 1.24.2
+	 	Code worked smoothly after I installed the libraries. 
+	 	Libraries intallation worked as expected.
 
 - **Are the versions dependent on the system the code is being run on? (try running it on different machines, by checking out the code onto these machines. Does it work out of the box?)** 
+
+Florian tried to run the code on different machines and idenify that tensorflow library does not work for Python 3.11. This a well know issue of this library. 
 
 ### Question 05
 
