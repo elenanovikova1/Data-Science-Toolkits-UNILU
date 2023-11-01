@@ -22,6 +22,15 @@ they have a 28x28 grid of pixels, with each pixel having a grayscale
 value. The dataset's structure includes x_train with a shape of (60000, 
 28, 28, 1).
 
+### Question 03
+
+During the work on the project we learned also how to revert commit in order to have clean history in the repository. It can be done using the following commands in the terminal : 
+
+- git revert “hash of the commit”
+- git push
+
+Note : if revert is done for “git add”, the initial file is also deleted from the folder on your machine as well as from git.
+
 ### Question 04
 
 - **Step necessary to run the code**:
