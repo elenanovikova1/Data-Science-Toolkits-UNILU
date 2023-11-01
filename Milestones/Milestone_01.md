@@ -29,7 +29,9 @@ During the work on the project we learned also how to revert commit in order to 
 - git revert “hash of the commit”
 - git push
 
-Note : if revert is done for “git add”, the initial file is also deleted from the folder on your machine as well as from git.
+Hash of the commit can be found in the history of the commits on the github.
+
+During our testing we have also spotted that the file was also deleted from the local machine, not only from the repository.
 
 ### Question 04
 
