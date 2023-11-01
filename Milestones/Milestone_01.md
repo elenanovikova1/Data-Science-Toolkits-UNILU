@@ -22,20 +22,36 @@ they have a 28x28 grid of pixels, with each pixel having a grayscale
 value. The dataset's structure includes x_train with a shape of (60000, 
 28, 28, 1).
 
-### Question 04 
+### Question 04
 
-**Pyhton versions and dependencies**: Are listed in the README.md  
-Systems where the code has been tested:
-* macOS
-* Linux ubuntu
+- **Step necessary to run the code**:
+	- Download and install Python from www.python.org
+	- Download and install some IDE for programming in Python (for example, PyCharm)
+	- Go to Git using the link from the task (https://github.com/keras-team/keras-io/blob/master/examples/vision/mnist_convnet.py)
+	- Creat new PyCharm project
+	- Create new *.py file in PyCharm project
+	- Copy the code from the link (https://github.com/keras-team/keras-io/blob/master/examples/vision/mnist_convnet.py)
+	- Paste to the *.py file
+	- Run
+	- It can be the case that the program does not run. It can happen since the code imports some libraries that are not yet installed on the computer. Libraries can be installed using the following options:
+		- Using PyCharm IDE: it highlights the missing libraries, do right click and proceed with intallation (Elena did this option and it worked out smoothly)
+		- Using terminal: using a command "$ pip install" + "name of the library"
+- **Versions are being used to run the code (python version and all
+dependencies)**: Are listed in the README.md. Systems where the code has been tested:
+	 * macOS
+	 * Linux ubuntu
 
 On macOS the code didn't run at first - need to install tensorflow-macos first. 
 
-Solution: docker for the different systems? 
+Solution: docker for the different systems?
+
+- **Are the versions dependent on the system the code is being run on? (try running it on different machines, by checking out the code onto these machines. Does it work out of the box?)** 
 
 ### Question 05
 
 *Explain the code*
+
+
 
 **Dependencies**
 ```
