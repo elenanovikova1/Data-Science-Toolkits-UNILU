@@ -1,8 +1,6 @@
 ## Milestone 01
 
-### Question 01 
-
-**1) Problem and Dataset Description**
+# Question 01 
 
 - **About the Dataset**: The dataset consists of 70,000 images (60,000 in 
 the training set and 10,000 in the test set) of handwritten digits, each 
@@ -22,7 +20,11 @@ they have a 28x28 grid of pixels, with each pixel having a grayscale
 value. The dataset's structure includes x_train with a shape of (60000, 
 28, 28, 1).
 
-### Question 03
+# Question 02
+
+Code was successfully obtained from github.
+
+# Question 03
 
 During the work on the project we learned also how to revert commit in order to have clean history in the repository. It can be done using the following commands in the terminal : 
 
@@ -35,14 +37,13 @@ During our testing we have also spotted that the file was also deleted from the 
 
 We also blocked all direct pushed to the main branch using Settings on the Github (Settings -> General -> Branches -> Branch protection rule -> Tick boxes "Require a pull request before merging" and "Require approvals" -> Save changes). 
 
-### Question 04
-
+# Question 04
 - **Step necessary to run the code**:
 	- Download and install Python from www.python.org
 	- Download and install some IDE for programming in Python (for example, PyCharm)
-	- Go to Git using the link from the task (https://github.com/keras-team/keras-io/blob/master/examples/vision/mnist_convnet.py)
-	- Creat new PyCharm project
+	- Create new PyCharm project
 	- Create new *.py file in PyCharm project
+	- Go to Git using the link from the task (https://github.com/keras-team/keras-io/blob/master/examples/vision/mnist_convnet.py)
 	- Copy the code from the link (https://github.com/keras-team/keras-io/blob/master/examples/vision/mnist_convnet.py)
 	- Paste to the *.py file
 	- Run
@@ -76,37 +77,54 @@ dependencies)**: General requirements are listed in the README.md. During testin
 
 Florian tried to run the code on different machines and idenify that tensorflow library does not work for Python 3.11. This a well know issue of this library. 
 
-### Question 05
+# Question 05
 
-*Explain the code*
+- **What is the input to and the output from the neural network?**
 
+Input: x_train, y_train.
+Output: 
 
+- **What is Keras? And how does it relate to Tensorflow?**
 
-**Dependencies**
+TBA
+
+- **How is the data loaded?**
+
+The following command loads the data from the mnist module of keras and splits it into training and testing sets:
+
+```
+(x_train, y_train), (x_test, y_test) = keras.datasets.mnist.load_data()
+```
+- **Which dependencies are imported?**
+
+The following commands import the necessary packages numpy (in the code it was used for operations with multi-dimentional arrays) and tensorflow (for machine learning / deep learning):
+
 ```
 import numpy as np
 from tensorflow import keras
 from tensorflow.keras import layers
 ```
+- **What kind of neural network architecture are you dealing with?**
 
-Imports the necessary packages numpy (for numerical operations) and tensorflow (for machine learning / deep learning)
+TBA
 
-**Parameters**
+
+
+
+
+
+### Other explanations of the code
+
+**Parameters:**
 ```
 num_classes = 10
 input_shape = (28, 28, 1)
 ```
 
 Specifies the parameters of the model. 
+
 num_classes: number of classes in the classification problem. E.g. 10 for the different digits 
 input_shape: specifies the shape of the input data - in this case image with dimension 28 x 28 pixels with 1 channel (grayscales only) 
-
-**Loading data**
-```
-(x_train, y_train), (x_test, y_test) = keras.datasets.mnist.load_data()
-```
-
-Loads the data from the mint module of keras and splits it into training and testing sets 
 
 **Pre-processing**
 ```
