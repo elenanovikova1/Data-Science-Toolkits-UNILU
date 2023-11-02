@@ -2,7 +2,13 @@
 
 ## Install 
 
-To run the programme, the following packages must be installed:
+If necessary install one of the supported python versions (see dependencies):
+
+````
+sudo apt install python3.10 
+```
+
+The following packages must be installed:
 
 ```
 $ pip install tensorflow
