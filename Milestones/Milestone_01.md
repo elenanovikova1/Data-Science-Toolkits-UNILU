@@ -81,13 +81,18 @@ Florian tried to run the code on different machines and idenify that tensorflow 
 
 - **What is the input to and the output from the neural network?**
 
-Input: x_train, y_train.
-Output: 
+Input: x_train, y__train; grayscale images of handwritten digits with dimension (28, 28, 1).
+
+Output: The output of the model is a probability distribution over the classes (10 classes representing the different digits). Therefore the highest probability value determines the predicted class/cathegory for that input image.
+
+```
+model.summary()
+```
+Prints a summary of the model layers, the output shape and the parameters. 
 
 - **What is Keras? And how does it relate to Tensorflow?**
 
-TBA
-
+Originally, Keras was an independent library in the Python with pre-designed functions for training nural networks. Since TensorFlow version 2.0, Keras is directly integrated into TensorFlow and us the API to use Tensorflow (computational backend for deep learning). The following model was applied in the code: Convolutional Neural Network with different layers (CNN). 
 - **How is the data loaded?**
 
 The following command loads the data from the mnist module of keras and splits it into training and testing sets:
@@ -97,7 +102,7 @@ The following command loads the data from the mnist module of keras and splits i
 ```
 - **Which dependencies are imported?**
 
-The following commands import the necessary packages numpy (in the code it was used for operations with multi-dimentional arrays) and tensorflow (for machine learning / deep learning):
+The following commands import the necessary packages, such as numpy (in the code it was used for operations with multi-dimentional arrays) and tensorflow (for machine learning / deep learning):
 
 ```
 import numpy as np
@@ -106,51 +111,8 @@ from tensorflow.keras import layers
 ```
 - **What kind of neural network architecture are you dealing with?**
 
-TBA
+CNN is a neural network architecture where the model is feature engineering itself and finding patterns in the images. The architecture of the CNN networks consists of multiple layers:
 
-
-
-
-
-
-### Other explanations of the code
-
-**Parameters:**
-```
-num_classes = 10
-input_shape = (28, 28, 1)
-```
-
-Specifies the parameters of the model. 
-
-num_classes: number of classes in the classification problem. E.g. 10 for the different digits 
-input_shape: specifies the shape of the input data - in this case image with dimension 28 x 28 pixels with 1 channel (grayscales only) 
-
-**Pre-processing**
-```
-x_train = x_train.astype("float32") / 255
-x_test = x_test.astype("float32") / 255
-```
-Normalices values for the pictures to [0,1] for the grayscale value - 0 representing white and 1 representing black 
-
-```
-x_train = np.expand_dims(x_train, -1)
-x_test = np.expand_dims(x_test, -1)
-print("x_train shape:", x_train.shape)
-print(x_train.shape[0], "train samples")
-print(x_test.shape[0], "test samples")
-```
-Reshapes the input data - the numpy function expand_dims adds on an additional dimension at the last position (-1) of the array. The dimension is for keras to know the number of channels. In this case 1 for grayscales.  
-Prints the shape of the x_train and x_test data to the check the correct dimension of the training data (28, 28, 1) and number of training and test datasets (60,000 and 10,000). 
-
-```
-y_train = keras.utils.to_categorical(y_train, num_classes)
-y_test = keras.utils.to_categorical(y_test, num_classes)
-```
-Pre-processing of label y. Converts a class vector (integers) to binary class matrix with the predefined number of classes: 10. (Required input format for Keras) 
-
-
-**Build model**
 ```
 model = keras.Sequential(
     [
@@ -167,48 +129,130 @@ model = keras.Sequential(
 
 model.summary()
 ```
-Model applied: Convolutional Neural Network with different layers (CNN). 
-Keras is the API to use Tensorflow (computational backend for deep learning).  
-CNN is a neural network architecture where the model is feature engineering itself and finding patterns in the images. 
 
-Layers applied: 
-* Convolutional layer: Convolutional layers are used to detect patterns and features in images. 
-* Pooling Layer: Max-pooling is used to use the highest values of the feature map as input for the next layer  
-* Flatten:  
-* Dropout: This adds a dropout layer with a dropout rate of 0.5. Dropout is a technique to prevent overfitting by randomly "dropping out" some neurons during training. 
-* Dense: Output layer  
+* Convolutional layer: Convolutional layers are used to detect patterns in the input data, like edges or textures. 
+* Pooling Layer: Max-pooling is used to use the highest values of the feature map as input for the next layer. It Zooms out and summarizes information to keep important details.
+* Flatten: It takes all the structured information and makes it flat, so it can be easily processed by certain types of neural network layers.
+* Dropout: This adds a dropout layer with a dropout rate of 0.5. Dropout is a technique to prevent overfitting by randomly "dropping out" some neurons during training.
+* Dense: Output layer. It takes all the information and combines it in various ways to make a final decision.
 
-Input: Grayscale images of handwritten digits with dimension (28, 28, 1).
-Output: The output of the model is a probability distribution over the classes (10 classes representing the different digits). Therefore the highest probability value determines the predicted class/cathegory for that input image.
+- **Other explanations on how the code works:**
+
 
 ```
+
+"""
+## Setup
+"""
+
+
+"""
+## Prepare the data
+"""
+
+# Import of required libraries
+import numpy as np
+from tensorflow import keras
+from tensorflow.keras import layers
+
+# Model / data parametersh
+
+# Number of labels used in the model (it identifies digits from 0 to 9, 
+# that's why there are 10 classes)
+num_classes = 10
+# Format of the images used for the input
+input_shape = (28, 28, 1)
+
+# Load the data and split it between train and test sets
+# x - images, y - labels
+(x_train, y_train), (x_test, y_test) = keras.datasets.mnist.load_data()
+
+# Scale images to the [0, 1] range
+# Normalices values for the pictures to [0,1] for the grayscale value - 0 # representing white and 1 representing black
+
+x_train = x_train.astype("float32") / 255
+x_test = x_test.astype("float32") / 255
+# Make sure images have shape (28, 28, 1)
+x_train = np.expand_dims(x_train, -1)
+x_test = np.expand_dims(x_test, -1)
+print("x_train shape:", x_train.shape)
+print(x_train.shape[0], "train samples")
+print(x_test.shape[0], "test samples")
+
+# Reshapes the input data - the numpy function expand_dims adds on an additional
+# dimension at the last position (-1) of the array. The dimension is for keras to 
+# know the number of channels. In this case 1 for grayscales.  
+# Prints the shape of the x__train and x__test data to the check the correct 
+# dimension of the training data (28, 28, 1) and number of training and 
+# test datasets (60,000 and 10,000). 
+
+
+# convert class vectors to binary class matrices
+# Pre-processing of label y. 
+# Converts a class vector (integers) to binary class matrix 
+# with the predefined number of classes: 10. (Required input format for Keras) 
+
+y_train = keras.utils.to_categorical(y_train, num_classes)
+y_test = keras.utils.to_categorical(y_test, num_classes)
+
+"""
+## Build the model
+"""
+
+model = keras.Sequential(
+    [
+        keras.Input(shape=input_shape),
+        layers.Conv2D(32, kernel_size=(3, 3), activation="relu"),
+        layers.MaxPooling2D(pool_size=(2, 2)),
+        layers.Conv2D(64, kernel_size=(3, 3), activation="relu"),
+        layers.MaxPooling2D(pool_size=(2, 2)),
+        layers.Flatten(),
+        layers.Dropout(0.5),
+        layers.Dense(num_classes, activation="softmax"),
+    ]
+)
+
 model.summary()
-```
-Prints a summary of the model layers, the output shape and the parameters. 
 
-**Model training**
+"""
+## Train the model
+"""
 
-```
+# The model will train itself with the sample size of 128 per iteration and adapt the weights. The iteration will be conducted 15 times. 
+
 batch_size = 128
 epochs = 15
 
 model.compile(loss="categorical_crossentropy", optimizer="adam", metrics=["accuracy"])
 
 model.fit(x_train, y_train, batch_size=batch_size, epochs=epochs, validation_split=0.1)
-```
-The model will train itself with the sample size of 128 per iteration and adapt the weights. The iteration will be conducted 15 times. 
 
-**Evaluate**
-```
+"""
+## Evaluate the trained model
+"""
+# Prints loss and accuracy of model tested on the test set. 
 score = model.evaluate(x_test, y_test, verbose=0)
 print("Test loss:", score[0])
 print("Test accuracy:", score[1])
+
 ```
-Prints loss and accuracy of model tested on the test set. 
 
 
+# Question 06
 
+TBA
 
+# Question 08
+
+TBA
+
+# Question 09
+
+TBA
+
+# Question 10
+
+TBA
 
 
 
