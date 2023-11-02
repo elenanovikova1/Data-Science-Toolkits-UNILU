@@ -64,17 +64,20 @@ dependencies)**: General requirements and dependencies are listed in the README.
 	 	* Keras version: 2.14.0
 	 	* Numpy vesrion: 1.26.1
 
-		* macOS Ventura
+		* macOS Ventura 13.2.1
 		* Python version: 3.11 
 		* Tensorflow version: 2.14.0
 	 	* Keras version: 2.12.0
 	 	* Numpy vesrion: 1.23.5
-	 	On macOS with M2 processor the code didn't run at first - need to install tensorflow-macos first. Which also resolved some dependency issues -> takes older versions of numpy and keras 
+	 	On macOS with M2 processor the code didn't run at first 
+	 	- need to install tensorflow-macos first. 
+	 	Which also resolved some dependency issues 
+	 	-> takes older versions of numpy and keras 
 
 	#### Elena:
 
 		Systems where the code has been tested:
-	 	* macOS
+	 	* macOS Monterey 12.4
 	 	* Python version: 3.8
 	 	* Tensorflow version: 2.14.0
 	 	* Keras version (the same as tensorflow): 2.14.0
@@ -102,7 +105,8 @@ Prints a summary of the model layers, the output shape and the parameters.
 
 - **What is Keras? And how does it relate to Tensorflow?**
 
-Originally, Keras was an independent library in the Python with pre-designed functions for training nural networks. Since TensorFlow version 2.0, Keras is directly integrated into TensorFlow and us the API to use Tensorflow (computational backend for deep learning). The following model was applied in the code: Convolutional Neural Network with different layers (CNN). 
+Originally, Keras was an independent library in the Python with pre-designed functions for training nural networks. Since TensorFlow version 2.0, Keras is directly integrated into TensorFlow and us the API to use Tensorflow (computational backend for deep learning). The following model was applied in the code: Convolutional Neural Network with different layers (CNN).
+
 - **How is the data loaded?**
 
 The following command loads the data from the mnist module of keras and splits it into training and testing sets:
