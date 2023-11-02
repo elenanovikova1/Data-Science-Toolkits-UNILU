@@ -1,11 +1,11 @@
 # Group Project DSDA 
 
-## Install 
+## Install Packages 
 
 If necessary install one of the supported python versions (see dependencies):
 
 ```
-sudo apt install python3.10 
+$ sudo apt install python3.10 
 ```
 
 The following packages must be installed:
