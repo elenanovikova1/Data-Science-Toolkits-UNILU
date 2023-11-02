@@ -1,4 +1,4 @@
-## Milestone 01
+# Milestone 01
 
 # Question 01 
 
@@ -37,6 +37,8 @@ During our testing we have also spotted that the file was also deleted from the 
 
 We also blocked all direct pushed to the main branch using Settings on the Github (Settings -> General -> Branches -> Branch protection rule -> Tick boxes "Require a pull request before merging" and "Require approvals" -> Save changes). 
 
+We have created a new feature branch to work on and to push the changes to: feature/digits.
+
 # Question 04
 - **Step necessary to run the code**:
 	- Download and install Python from www.python.org
@@ -51,17 +53,25 @@ We also blocked all direct pushed to the main branch using Settings on the Githu
 		- Using PyCharm IDE: it highlights the missing libraries, do right click and proceed with intallation (Elena did this option and it worked out smoothly)
 		- Using terminal: using a command "$ pip install" + "name of the library"
 - **Versions are being used to run the code (python version and all
-dependencies)**: General requirements are listed in the README.md. During testing we had different experience due to different versions of the software on our machines.
+dependencies)**: General requirements and dependencies are listed in the README.md. During testing we had different experience due to different versions of the software on our machines.
 
-	####Florian:
+	#### Florian:
 
 		Systems where the code has been tested:
-	 	* macOS
-	 	* Linux ubuntu
-	 	On macOS the code didn't run at first - need to install tensorflow-macos first.
-	 	Solution: docker for the different systems?
+	 	* Linux ubuntu 22.4 
+		* Python version: 3.10.12
+		* Tensorflow version: 2.14.0
+	 	* Keras version: 2.14.0
+	 	* Numpy vesrion: 1.26.1
 
-	####Elena:
+		* macOS Ventura
+		* Python version: 3.11 
+		* Tensorflow version: 2.14.0
+	 	* Keras version: 2.12.0
+	 	* Numpy vesrion: 1.23.5
+	 	On macOS with M2 processor the code didn't run at first - need to install tensorflow-macos first. Which also resolved some dependency issues -> takes older versions of numpy and keras 
+
+	#### Elena:
 
 		Systems where the code has been tested:
 	 	* macOS
@@ -75,7 +85,7 @@ dependencies)**: General requirements are listed in the README.md. During testin
 
 - **Are the versions dependent on the system the code is being run on? (try running it on different machines, by checking out the code onto these machines. Does it work out of the box?)** 
 
-Florian tried to run the code on different machines and idenify that tensorflow library does not work for Python 3.11. This a well know issue of this library. 
+For macOS M2 it didn't work out of the box. Needed to install tensorflow-macos first. 
 
 # Question 05
 
@@ -240,11 +250,11 @@ print("Test accuracy:", score[1])
 
 # Question 06
 
-TBA
+The documentation file README.md listing the dependencies has been added to the feature branch and will be merged into the main branch with a "Pull Request".
 
 # Question 08
 
-TBA
+Folder "Milestones" created with the report milestone_01.md 
 
 # Question 09
 
