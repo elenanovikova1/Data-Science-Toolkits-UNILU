@@ -4,7 +4,7 @@
 
 If necessary install one of the supported python versions (see dependencies):
 
-````
+```
 sudo apt install python3.10 
 ```
 
