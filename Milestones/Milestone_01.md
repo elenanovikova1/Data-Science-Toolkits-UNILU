@@ -2,23 +2,26 @@
 
 # Question 01 
 
-- **About the Dataset**: The dataset consists of 70,000 images (60,000 in 
-the training set and 10,000 in the test set) of handwritten digits, each 
-labeled to indicate the digit it represents. Each label is a vector with 
-10 entries, where all entries except one are zero, and the position of the 
-non-zero entry corresponds to the digit shown in the picture. For example, 
+- **About the Dataset**: The dataset consists of 70,000 images and labels (60,000 in 
+the training set and 10,000 in the test set) of handwritten digits. 
+
+- **Characteristics of the Dataset**: The images are 28x28 pixels, meaning 
+they have a 28x28 grid of pixels, with each pixel having a grayscale 
+value. The dataset's structure includes x\_train with a shape of (60000, 
+28, 28). We identified it by using the following command in the code: 
+```print("x_train shape:", x_train.shape)```. 
+<br>
+<br>
+Each label is a digit (represented by an 8-bit unsigned integer, we got this by adding the following command in begginning of the code : ```print("label type: ", type(y_train[0])))```. Later, the data is transformed to a vector with 10 entries, where all entries except one are zero, and the position of the non-zero entry corresponds to the digit shown in the picture. For example, 
 the label for the digit seven is (0;0;0;0;0;0;1;0;0;0).
+
+- **Problem solved by the machine learning models**: Machine learning models solve the problem of determining digits represented on the images.
 
 - **Classification or Regression Problem?**: This is a classification 
 problem because it aims to predict the discrete and finite values (10 
 different digits) represented by the images. Classification problems 
 involve predicting a category, while regression problems estimate an 
 unknown function based on function values.
-
-- **Characteristics of the Dataset**: The images are 28x28 pixels, meaning 
-they have a 28x28 grid of pixels, with each pixel having a grayscale 
-value. The dataset's structure includes x_train with a shape of (60000, 
-28, 28, 1).
 
 # Question 02
 
@@ -35,7 +38,7 @@ Hash of the commit can be found in the history of the commits on the github.
 
 During our testing we have also spotted that the file was also deleted from the local machine, not only from the repository.
 
-We also blocked all direct pushed to the main branch using Settings on the Github (Settings -> General -> Branches -> Branch protection rule -> Tick boxes "Require a pull request before merging" and "Require approvals" -> Save changes). 
+We also blocked all direct pushes to the main branch using Settings on the Github (Settings -> General -> Branches -> Branch protection rule -> Tick boxes "Require a pull request before merging" and "Require approvals" -> Save changes). 
 
 We have created a new feature branch to work on and to push the changes to: feature/digits.
 
@@ -44,7 +47,7 @@ We have created a new feature branch to work on and to push the changes to: feat
 	- Download and install Python from www.python.org
 	- Download and install some IDE for programming in Python (for example, PyCharm)
 	- Create new PyCharm project
-	- Create new *.py file in PyCharm project
+	- Create new *.py file in the PyCharm project
 	- Go to Git using the link from the task (https://github.com/keras-team/keras-io/blob/master/examples/vision/mnist_convnet.py)
 	- Copy the code from the link (https://github.com/keras-team/keras-io/blob/master/examples/vision/mnist_convnet.py)
 	- Paste to the *.py file
@@ -88,13 +91,13 @@ dependencies)**: General requirements and dependencies are listed in the README.
 
 - **Are the versions dependent on the system the code is being run on? (try running it on different machines, by checking out the code onto these machines. Does it work out of the box?)** 
 
-For macOS M2 it didn't work out of the box. Needed to install tensorflow-macos first. 
+For macOS Ventura 13.2.1 (M2) it didn't work out of the box. Needed to install tensorflow-macos first. 
 
 # Question 05
 
 - **What is the input to and the output from the neural network?**
 
-Input: x_train, y__train; grayscale images of handwritten digits with dimension (28, 28, 1).
+Input: x\_train, y\_train; grayscale images of handwritten digits with dimension (28, 28, 1).
 
 Output: The output of the model is a probability distribution over the classes (10 classes representing the different digits). Therefore the highest probability value determines the predicted class/cathegory for that input image.
 
