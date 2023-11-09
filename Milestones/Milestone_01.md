@@ -8,16 +8,11 @@ the training set and 10,000 in the test set) of handwritten digits.
 - **Characteristics of the Dataset**: The images are 28x28 pixels, meaning 
 they have a 28x28 grid of pixels, with each pixel having a grayscale 
 value. The dataset's structure includes x\_train with a shape of (60000, 
-28, 28). We identified it by using the following command in the code:  
-```
-print("x_train shape:", x_train.shape)
-```
-Later, the data is transformed by adding additional dimension.  
-Each label is a digit (represented by an 8-bit unsigned integer), we got this by adding the following command in begginning of the code  
-```
-print("label type: ", type(y_train[0]))
-```  
-Later, the data is transformed to a vector with 10 entries, where all entries except one are zero, and the position of the non-zero entry corresponds to the digit shown in the picture. For example, 
+28, 28). We identified it by using the following command in the code: 
+```print("x_train shape:", x_train.shape)```. Later, the data is transformed by adding additional dimension.
+<br>
+<br>
+Each label is a digit (represented by an 8-bit unsigned integer, we got this by adding the following command in begginning of the code : ```print("label type: ", type(y_train[0])))```. Later, the data is transformed to a vector with 10 entries, where all entries except one are zero, and the position of the non-zero entry corresponds to the digit shown in the picture. For example, 
 the label for the digit seven is (0;0;0;0;0;0;1;0;0;0).
 
 - **Problem solved by the machine learning models**: Machine learning models solve the problem of determining digits represented on the images.
@@ -236,12 +231,18 @@ model.summary()
 ## Train the model
 """
 
-# The model will train itself with the sample size of 128 per iteration and adapt the weights. The iteration will be conducted 15 times. 
+# The model will train itself with the sample size of 128 per iteration and adapt the weights. 
+#15 epochs mean that the neural network trains using the whole training data 15 times. 
 
 batch_size = 128
 epochs = 15
 
+# The loss function is the Categorical Crossentropy that is suitable for classification problems with multiple labels.
+# The optimizer is Adam (it is frequently used for optimization in training of neural networks).
+# The metrics is accuracy, i.e. the percentage of correctly predicted digits.
+
 model.compile(loss="categorical_crossentropy", optimizer="adam", metrics=["accuracy"])
+
 
 model.fit(x_train, y_train, batch_size=batch_size, epochs=epochs, validation_split=0.1)
 
@@ -266,11 +267,11 @@ Folder "Milestones" created with the report milestone_01.md
 
 # Question 09
 
-TBA
+Pull request created and accepted by another team member. Task is merged with the main branch.
 
 # Question 10
 
-TBA
+We created using GitHub UI a tag/release of the commit on the main branch which is called called "milestone_1".
 
 
 
