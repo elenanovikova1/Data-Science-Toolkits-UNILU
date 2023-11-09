@@ -153,6 +153,7 @@ model = keras.Sequential(
 
 - **Other explanations on how the code works:**
 
+Below you can find the code with our comments that provide more explanation:
 
 ```
 
@@ -276,7 +277,7 @@ Pull request created and accepted by another team member. Task is merged with th
 
 # Question 10
 
-We created using GitHub UI a tag/release of the commit on the main branch which is called called "milestone_1".
+Using GitHub UI, we created a tag/release of the commit on the main branch which is called called "milestone_1".
 
 
 
