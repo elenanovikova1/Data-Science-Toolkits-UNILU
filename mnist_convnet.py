@@ -4,26 +4,16 @@
 Created on Sun Oct 22 15:03:38 2023
 
 @author: floriangoldinger
-"""
 
-"""
 Title: Simple MNIST convnet
 Author: [fchollet](https://twitter.com/fchollet)
 Date created: 2015/06/19
 Last modified: 2020/04/21
 Description: A simple convnet that achieves ~99% test accuracy on MNIST.
 Accelerator: GPU
-"""
 
-"""
 ## Setup
 """
-
-
-"""
-## Prepare the data
-"""
-
 
 import numpy as np
 from tensorflow import keras
@@ -46,7 +36,6 @@ print("x_train shape:", x_train.shape)
 print(x_train.shape[0], "train samples")
 print(x_test.shape[0], "test samples")
 
-
 # convert class vectors to binary class matrices
 y_train = keras.utils.to_categorical(y_train, num_classes)
 y_test = keras.utils.to_categorical(y_test, num_classes)
@@ -54,7 +43,6 @@ y_test = keras.utils.to_categorical(y_test, num_classes)
 """
 ## Build the model
 """
-
 model = keras.Sequential(
     [
         keras.Input(shape=input_shape),
@@ -80,6 +68,24 @@ epochs = 15
 model.compile(loss="categorical_crossentropy", optimizer="adam", metrics=["accuracy"])
 
 model.fit(x_train, y_train, batch_size=batch_size, epochs=epochs, validation_split=0.1)
+
+"""
+## Save and load the trained model
+"""
+
+# Save the entire model to a HDF5 file
+
+file_name = "saved_model.keras"
+model.save(file_name)
+
+# Load the model from the file
+loaded_model = keras.models.load_model(file_name)
+
+# Prediction
+prediction = loaded_model.predict(x_test[0:1])
+predicted_class = np.argmax(prediction, axis=1)
+print("Predicted Class:", predicted_class)
+print("True Class:", y_test[0:1])
 
 """
 ## Evaluate the trained model

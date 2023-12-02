@@ -105,6 +105,63 @@ Therefore it makes sense to take a little bit of research to ensure quality and 
 
 But also simple indicators like stars and forks on PyPI can be an indicator. If there is very low community involvement, the package might not be secure. 
 
+# Task 3
 
+### Can code load the data? ###
 
-# Task 2 
+Yes, code successfully loads the data. Data upload is performed using the following command in the code:
+
+```(x_train, y_train), (x_test, y_test) = keras.datasets.mnist.load_data()```
+
+### Can code train (fit) a neural network on the data? ###
+
+Yes, it can. Code trains a neural network on the data using the following command in the code:
+
+```
+model.fit(x_train, y_train, batch_size=batch_size, epochs=epochs, validation_split=0.1)
+```
+
+### Can code save a fitted model to a ".h5" file (or saved model type for newer Tensorflow 2.0 versions)? ###
+
+No, initial version of the code does not save a fitted model to a ".h5" file. We need to modify the code by adding few commdand for Tensorflow 2.14.0 version. Initially we added the following lines:
+
+```
+file_name = "saved_model.h5"
+model.save(file_name)
+```
+
+We got warning that the format should be different:
+
+```
+UserWarning: You are saving your model as an HDF5 file via `model.save()`. This file format is considered legacy. We recommend using instead the native Keras format, e.g. `model.save('my_model.keras')`.
+```
+
+The code was amended accordingly:
+
+```
+file_name = "saved_model.keras"
+model.save(file_name)
+```
+
+and it worked as expected without errors. File was saved to the folder with the code. We also amended gitignore file accordingly in order to exclude it from push.
+
+### Can code load a ".h5" file, using Keras (or saved model type for newer Tensorflow 2.0 versions)? ###
+
+No, initial version of the code does not load a fitted model from a ".h5" file. We need to modify the code by adding the follwoing command:
+
+```
+loaded_model = keras.models.load_model(file_name)
+```
+recall that ```file_name = "saved_model.keras"```.
+
+### Can code perform predictions using a "fitted" model, using Keras? ###
+
+No, initial version of the code does not perform predictions using the model. We need to modify the code by adding the follwoing command:
+
+```
+prediction = loaded_model.predict(x_test[0:1])
+predicted_class = np.argmax(prediction, axis=1)
+print("Predicted Class:", predicted_class)
+print("True Class:", y_test[0:1])
+```
+We remark that the original code contains evaluation of the model of all test samples and outputs test loss and test accuracy.
