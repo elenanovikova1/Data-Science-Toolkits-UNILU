@@ -165,3 +165,32 @@ print("Predicted Class:", predicted_class)
 print("True Class:", y_test[0:1])
 ```
 We remark that the original code contains evaluation of the model of all test samples and outputs test loss and test accuracy.
+
+## Task 5
+
+We created a requirements file `requirements.txt` with the following content and according to the dependencies identified in the first Milestone_01:
+
+```
+tensorflow==2.14.0
+numpy==1.23.5
+```
+
+To create a new virtual environment and to activate it you need to proceed with this steps:
+
+```
+$ python3 -m venv venv #creates the virtual environment named venv
+$ source venv/bin/activate #activates the virtual environment where you can install the required packages
+```
+
+In the activated virtual environment the following steps are necessary to run the installations specified in the requirements file: 
+
+```
+(venv) $ pip install -r requirements.txt
+```
+
+To test if all the required packages are installed you can execute which shows the packages installed within this virtual environment:
+
+```
+(venv) $ pip list
+```
+```
