@@ -2,6 +2,21 @@
 
 ## Task 1
 
+We have already added gitignore file to our repository. We continuously update this file when needed.
+
+### Why you added a certain "ignore" to the file
+
+The main idea is to avoid unnecessary files in the repository. Currently, there are the following files to be avoided: 
+
+- All technical files with the following dimentions: .DS_Store .idea/
+- Model that created by neural network in the code with the following filename: saved_model.h5
+
+### Control over gitignore file
+
+We version-control the ".gitignore" file. In our case, the most efficient strategy is to work in the same branch together because we can update each other quickly. We also before created separately our own branches for pure testing (to understand how git works before working on the project).
+
+Since we worked in the same branch we did not have any issues with the update of the ".gitignore" file. As we understood, there was not strict requirement to work in separate branches and we chose the most efficient way for our team to do the project.
+
 ## Task 2
 
 ### What is a Hash Function?
@@ -166,6 +181,51 @@ print("True Class:", y_test[0:1])
 ```
 We remark that the original code contains evaluation of the model of all test samples and outputs test loss and test accuracy.
 
+# Task 4
+
+### Split your code base into modules ###
+We splitted the code into several modules:
+
+```from load_and_prepare_data import get_data``` : this module containes the function get_data that loads the data and splits it between train and test sets, and then converts it for further usage
+
+```from neuralnet_architecture import create_model``` : this module contains the function create_model that creates the nural network
+
+```from neuralnet_training import train_model```  : this module contains the function train_model that trains the nural network
+
+```from prediction import predict_classes``` : this module contains the function predict_classes that predicts digits from images
+
+Native naming makes it easier to navigate within the code.
+
+### The reasoning behind modularization and why we chose to structure the code like this
+
+There were the following main reasons why we did it such way:
+
+1. Modules are logically different from each other
+2. Each module might be used separately later
+3. I also makes sense to create modules such way that we can easily separate (make as comment) parts that require significant time to execute (for example, now we can make as comment part where code creates the model and we can easily use already saved model for testing that does not require model creation)
+3. There was no sense to segregare one line of code into separate module (even though it performed a particular task), for example ```model.save(file_name)```
+
+We used Python functions in order to import from our modules. 
+
+###  Main file
+
+We created one "main.py" script that calls the code/functions in all the other modules.
+
+###  Imports in modules
+
+Our modules contains imports that are required to perform funcitons within modules. For example, neuralnet_architecture module requires to import the following packages:
+
+```
+from keras import layers
+```
+```
+from tensorflow import keras
+```
+###  PEP8 conformity
+
+Our code is consistent with PEP8.
+
+
 ## Task 5
 
 We created a requirements file `requirements.txt` with the following content and according to the dependencies identified in the first Milestone_01:
@@ -192,5 +252,4 @@ To test if all the required packages are installed you can execute which shows t
 
 ```
 (venv) $ pip list
-```
 ```
