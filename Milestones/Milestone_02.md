@@ -9,7 +9,7 @@ We have already added gitignore file to our repository. We continuously update t
 The main idea is to avoid unnecessary files in the repository. Currently, there are the following files to be avoided: 
 
 - All technical files with the following dimentions: .DS_Store .idea/
-- Model that created by neural network in the code with the following filename: saved_model.h5
+- Model that created by neural network in the code with the following filename: saved_model.h5, saved_model.keras
 
 ### Control over gitignore file
 
@@ -253,6 +253,7 @@ To test if all the required packages are installed you can execute which shows t
 ```
 (venv) $ pip list
 ```
+<<<<<<< Updated upstream
 
 ## Task 6
 
@@ -290,3 +291,4 @@ To run the main.py script in the container use this command:
 ```
 $ docker run digits:1.0 
 ```
+We have also both tested it and it worked as expected without errors for both of us. In order to control Docker build context we created a ".dockerignore" file.
