@@ -323,6 +323,6 @@ Dockerfile:14
 ERROR: failed to solve: process "/bin/sh -c pip install -r requirements.txt" did not complete successfully: exit code: 1
 ```
 
-As to our research, this could also be related to the processor architecture (exec format error) and that we could not use this base image on a ARM processor. Unfortunately we lack the knowledge to address this issue on how to build a container on images that support different processor architectures. 
+As to our research, this could also be related to the processor architecture (exec format error) and that we could not use this base image on a ARM processor. Unfortunately we lack the knowledge to address this issue on how to build a container on images that support different processor architectures. Additionally we would have to add other dependencies, because we saw in Milestone_01 that the script only works on the ARM processor when tensorflow-macos was installed. 
 
 In order to control Docker build context we created a ".dockerignore" file.
