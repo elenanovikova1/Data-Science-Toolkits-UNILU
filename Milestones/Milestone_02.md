@@ -291,4 +291,38 @@ To run the main.py script in the container use this command:
 ```
 $ docker run digits:1.0 
 ```
-We have also both tested it and it worked as expected without errors for both of us. In order to control Docker build context we created a ".dockerignore" file.
+To have access to data stored on the local directory outside of the container, a volume has to be activated with this command:
+
+```
+docker run -v $(pwd):/app/ -it digits:1.0
+```
+
+This links the local directory pwd to the /app/ directory in the container and allows the app to access data outside of the container (e.g. the stored trained model).   
+
+We have also both tested it and it worked on different computers with Intel processor but not on the MacBook Pro with ARM processor. Apparently the base image from tensorflow is not compatible with this processor architecture. 
+
+```
+floriangoldinger@Florians-MacBook-Pro project_01 % docker run digits:1.0
+WARNING: The requested image's platform (linux/amd64) does not match the detected host platform (linux/arm64/v8) and no specific platform was requested
+```
+
+Also when run on the virtual machine on Ubuntu an error message appears on this same laptop. 
+
+```
+> [9/9] RUN pip install -r requirements.txt:
+0.178 exec /bin/sh: exec format error
+------
+Dockerfile:14
+--------------------
+  12 |     
+  13 |     
+  14 | >>> RUN pip install -r requirements.txt
+  15 |     
+  16 |     CMD python main.py
+--------------------
+ERROR: failed to solve: process "/bin/sh -c pip install -r requirements.txt" did not complete successfully: exit code: 1
+```
+
+As to our research, this could also be related to the processor architecture (exec format error) and that we could not use this base image on a ARM processor. Unfortunately we lack the knowledge to address this issue on how to build a container on images that support different processor architectures. 
+
+In order to control Docker build context we created a ".dockerignore" file.
