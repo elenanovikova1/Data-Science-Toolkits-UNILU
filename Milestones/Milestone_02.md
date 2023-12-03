@@ -253,3 +253,40 @@ To test if all the required packages are installed you can execute which shows t
 ```
 (venv) $ pip list
 ```
+
+## Task 6
+
+We created a ```Dockerfile``` that uses the tensorflow base-image from Docker Hub: 
+
+```
+# Image of tensorflow developers 
+FROM tensorflow/tensorflow:2.14.0
+
+WORKDIR /app
+
+# loads the below files into the directory /app of the Docker container 
+COPY requirements.txt .
+COPY main.py .
+COPY load_and_prepare_data.py .
+COPY neuralnet_architecture.py .
+COPY neuralnet_training.py . 
+COPY prediction.py .
+
+# Installs the packages 
+RUN pip install -r requirements.txt
+
+# Executes main.py with the Interpreter 
+CMD python main.py
+```
+
+To build a Docker container based on the image  you have to execute the following command in the directory of the Dockerfile:
+
+```
+$ docker build -t digits:1.0 .
+```
+
+To run the main.py script in the container use this command:
+
+```
+$ docker run digits:1.0 
+```
