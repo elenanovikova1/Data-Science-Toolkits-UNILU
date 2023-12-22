@@ -57,7 +57,7 @@ Lets break this down:
 
 ```-e POSTGRES_PASSWORD=mypassword -e POSTGRES_DB=mydatabase```: sets the environmental variables for the password and the name of the database 
 
-```-d postgres:alpine```: runs the container from the image postgres:alpine in detached mode (in the background)
+```-d postgres:14.0```: runs the container from the image postgres:alpine in detached mode (in the background)
 
 ### Python app to create database, writes and reads from it and prints the result 
 
@@ -74,7 +74,7 @@ The script saves some jokes in the table and script ```read_out.py``` selects on
 
 ### Download the PGADMIN Tool (https://www.pgadmin.org/download/). It also exists as a Docker Image :). Connect to your running PostgreSQL Database. Can you see your database and table?
 
-First couldn't read out the jokes with a second script that only reads them out. We forgot to commit the changes. Added con.commit() after every change in the database - Now it appears in pgAdmin - used the following query ```SELECT * FROM ms3_jokes``` to show all the entries. 
+First couldn't read out the jokes with a second script that only connects to the database to read out the jokes. We forgot to commit the changes. Added con.commit() after every change in the database - Now it appears in pgAdmin - used the following query ```SELECT * FROM ms3_jokes``` to show all the entries. 
 
 ### If you stopped and deleted the Docker container running the database and restarted it. Would your joke still be in the database? Why or why not?
 
