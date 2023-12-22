@@ -30,4 +30,29 @@ In general a localhost is suitable in the development phase to simulate interact
 
 ## Task 2
 
+### What is PostgreSQL? Is it SQL or no-SQL (why?)
+
+PostgreSQL is a relational database system and is based on the conventions and rules of a relational SQL databases. Data is stored in tables with predefined relationships. SQL is used as query language. 
+Whereas a NoSQL doesn't completely adhere to these principles. 
+
+
+### Run a PostgreSQL Server (current version is 14.0) using a Docker image from the officialPostgreSQL Docker Hub page ###
+
+The following steps have to be executed to run a PostgreSQL server using an image from PostgreSQL. Download the current image wich is based on alpine: 
+
+```
+$ docker pull postgres:alpine
+```
+
+Run the container: 
+```
+$ docker run --name postgres-db -p 5432:5432 -e POSTGRES_PASSWORD=mypassword -e POSTGRES_DB=mydatabase -d postgres:alpine
+```
+
+Lets break this down:
+--name postgres-db -> runs the container named postgres-db
+-p 5432:5432 -> maps the port 5432 of the host machine to the port 5432 of the container
+-e POSTGRES_PASSWORD=mypassword -> sets the environmental variables for the password and the name of the database 
+-d postgres:alpine -> runs the container from the image postgres:alpine in detached mode (in the background)
+
 
