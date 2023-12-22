@@ -51,12 +51,36 @@ $ docker run --name postgres-db -p 5432:5432 -e POSTGRES_PASSWORD=mypassword -e 
 ```
 
 Lets break this down:
---name postgres-db -> runs the container named postgres-db
+```--name postgres-db```: runs the container named postgres-db
 
--p 5432:5432 -> maps the port 5432 of the host machine to the port 5432 of the container
+```-p 5432:5432```: maps the port 5432 of the host machine to the port 5432 of the container
 
--e POSTGRES_PASSWORD=mypassword -e POSTGRES_DB=mydatabase -> sets the environmental variables for the password and the name of the database 
+```-e POSTGRES_PASSWORD=mypassword -e POSTGRES_DB=mydatabase```: sets the environmental variables for the password and the name of the database 
 
--d postgres:alpine -> runs the container from the image postgres:alpine in detached mode (in the background)
+```-d postgres:alpine```: runs the container from the image postgres:alpine in detached mode (in the background)
+
+### Python app to create database, writes and reads from it and prints the result 
+
+
+First install the client psycopg2. We had to install the binary version of the client, the psycopgn2 itself didn't work - update requirements.txt with this package 
+
+```
+$ pip install psycopg2-binary:2.9.9
+```
+
+We created a python script that connects to the database above ```mydatabase``` on the specified port 5432 with the username and password selected for the postgreSQL server running in the docker container postgres-db. 
+The python script ```jokes.py``` creates a table ms3_jokes with the ``ìd``` and ```jokes``` column. 
+The script saves some jokes in the table and selects one random joke that gets printed out. 
+
+### Download the PGADMIN Tool (https://www.pgadmin.org/download/). It also exists as a Docker Image :). Connect to your running PostgreSQL Database. Can you see your database and table?
+
+First couldn't read out the jokes with a second script that only reads them out. We forgot to commit the changes. Added: con.commit() - But can still not be found in pgAdmin. 
+
+### If you stopped and deleted the Docker container running the database and restarted it. Would your joke still be in the database? Why or why not?
+
+The jokes were still in the database if the container was just stopped and restarted. But the jokes disappeared if the container is deleted. If run again a new instance of the container is created. 
+
+
+
 
 
