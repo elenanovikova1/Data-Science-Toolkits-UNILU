@@ -36,23 +36,27 @@ PostgreSQL is a relational database system and is based on the conventions and r
 Whereas a NoSQL doesn't completely adhere to these principles. 
 
 
-### Run a PostgreSQL Server (current version is 14.0) using a Docker image from the officialPostgreSQL Docker Hub page ###
+### Run a PostgreSQL Server (current version is 14.0) using a Docker image from the official PostgreSQL Docker Hub page ###
 
-The following steps have to be executed to run a PostgreSQL server using an image from PostgreSQL. Download the current image wich is based on alpine: 
+The following steps have to be executed to run a PostgreSQL server using an image from PostgreSQL. 
+Download the current image 14.0: 
 
 ```
-$ docker pull postgres:alpine
+$ docker pull postgres:14.0
 ```
 
 Run the container: 
 ```
-$ docker run --name postgres-db -p 5432:5432 -e POSTGRES_PASSWORD=mypassword -e POSTGRES_DB=mydatabase -d postgres:alpine
+$ docker run --name postgres-db -p 5432:5432 -e POSTGRES_PASSWORD=mypassword -e POSTGRES_DB=mydatabase -d postgres:14.0
 ```
 
 Lets break this down:
 --name postgres-db -> runs the container named postgres-db
+
 -p 5432:5432 -> maps the port 5432 of the host machine to the port 5432 of the container
--e POSTGRES_PASSWORD=mypassword -> sets the environmental variables for the password and the name of the database 
+
+-e POSTGRES_PASSWORD=mypassword -e POSTGRES_DB=mydatabase -> sets the environmental variables for the password and the name of the database 
+
 -d postgres:alpine -> runs the container from the image postgres:alpine in detached mode (in the background)
 
 
