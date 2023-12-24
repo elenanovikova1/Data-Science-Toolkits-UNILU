@@ -127,7 +127,24 @@ Files related to the folution of this point are located in the folder "MNIST_Dat
 There are also comments in the code to some sections with explanation what is performed in each section.
 
 ## Task 4
+
+In order to execute this task we partially updated some of the abovementioned files from task 3:
+
+- image\_binary\_converation: we addded function ```binary_to_training_array``` that transforms binary representation of the image into array in order to use for prediciton
+- mnist\_datasabe\_utils: we added two functions ```insert_prediction``` and ```get_prediction_from_image_id``` in order to insert prediction into predictions table and in order to get prediction by image id
+
+We created new file task4.py in order to perform this task:
+
+- we create input and predictions tables
+- if they exist, we do not create them and do not insert anything, if they do not exist, we create them, we add the image to the input table and we add its prediction to prediction table
+
+We followed steps from the the project task. We created docker-compose.yml file which is located in the root folder, executed code in another container, created databased with the name "milestone_3", loaded the data, etc. There are more comments in the code with further explanations.
+
+### Explain to us how you chose to structure your database (essentially your database schema). What tables do you have, what attributes do they have. 
+
 TBA
 
 ## Additional question
 ###What is an SQL Injection Attack and how can you protect yourself?
+
+TBA

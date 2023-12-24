@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:14.0
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: milestone_3
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: mypassword
+    ports:
+      - "5432:5432"
+
+  app:
+    build:
+      context: .
+      dockerfile: MNIST_Database/Dockerfile
+    volumes:
+      - ./saved_model.keras:/usr/src/app/saved_model.keras
+    depends_on:
+      - db
+    environment:
+      - DATABASE_HOST=db
+      - DATABASE_USER=user
+      - DATABASE_PASSWORD=password
+      - DATABASE_NAME=milestone_3
+
+volumes:
+  db_data:
