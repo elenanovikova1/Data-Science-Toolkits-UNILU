@@ -103,7 +103,7 @@ Considering the nature of the MNIST dataset, we create a table named "mnist_tabl
 
 ####3. What additional relational database table attributes might make sense to easily query your data (f.e. find all pictures of giraffes)
 
-TBA
+There is a varity of options to add such additional relations. We added an attribute that shows in from which dataset the image comes from (it makes sense for for our dataset due to its structure). Please see above the description of this column.
 
 ### Task 2 using a sample from your own data set 
 
@@ -138,13 +138,52 @@ We created new file task4.py in order to perform this task:
 - we create input and predictions tables
 - if they exist, we do not create them and do not insert anything, if they do not exist, we create them, we add the image to the input table and we add its prediction to prediction table
 
-We followed steps from the the project task. We created docker-compose.yml file which is located in the root folder, executed code in another container, created databased with the name "milestone_3", loaded the data, etc. There are more comments in the code with further explanations.
+We followed steps from the the project guidance. We created docker-compose.yml file which is located in the root folder, executed code in another container, created databased with the name "milestone_3", loaded the data, etc. There are more comments in the code with further explanations.
+
+In order to demonstrate that ```input\_data\_id``` from predictions table indeed corresponds to the id of the image in the input table, we decided to insert multiple rows into input database and only one row (that corresponds to the image with id>1 in the input table). In this example ```id``` and ```input\_data\_id``` in the prediction table are different.
 
 ### Explain to us how you chose to structure your database (essentially your database schema). What tables do you have, what attributes do they have. 
 
-TBA
+There are 2 objects: input table and predictions table. 
+
+The input table is described in the task 3 and has the following structure:
+
+- id (Data type: SERIAL PRIMARY KEY): a unique identifier for each image
+- image_binary (Data type: BYTEA): the binary representation of the image
+- label (Data type: INTEGER): the digit that the image represents
+- is_train (Data type: BOOLEAN): flag that indicates the data set where the images comes from (True for Train and False for Test)
+
+The prediction table is created in the same file and has the following structure:
+
+- id (Data type: SERIAL PRIMARY KEY): a unique identifier for each image
+- input\_data\_id (Data type: INTEGER REFERENCES input_data(id)): id in the input table
+- prediction (Data type: INTEGER): the result of the neural network prediction
 
 ## Additional question
 ###What is an SQL Injection Attack and how can you protect yourself?
 
-TBA
+An SQL Injection Attack is a type of cyber attack that targets databases through web application vulnerabilities. It occurs when an attacker manipulates a standard SQL query by inserting or injecting malicious SQL code into the input field for execution (e.g., to a webpage input form). This can allow the attacker to view, modify, or delete data that they are not normally able to access. Main aspects of an SQL Injection Attack:
+
+1. Input Manipulation: The attacker inputs malicious SQL code into a vulnerable input field on a website or application.
+
+2. Exploiting Vulnerabilities: If the application is not properly secured, it will execute the malicious SQL code as part of its standard database interaction.
+
+3. Potential Damages: This can lead to unauthorized access to sensitive data (like customer information), database modification, and in extreme cases, control over the database server or related systems.
+
+Examples of SQL Injection Prevention Measures:
+
+1. **Input Validation and Sanitization:**
+   Validate and sanitize user inputs based on rules.
+
+2. **Least Privilege:**
+   Limit database accounts to essential permissions.
+
+3. **Regular Security Testing:**
+   Conduct routine tests to address vulnerabilities.
+
+4. **Web Application Firewalls (WAFs):**
+   Deploy WAFs to detect and block attacks.
+
+5. **Updates and Patches:**
+   Regularly update software to patch vulnerabilities.
+

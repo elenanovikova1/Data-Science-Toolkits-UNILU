@@ -6,10 +6,12 @@ from mnist_database_utils import get_image_from_id, get_prediction_from_image_id
 from image_binary_convertation import binary_to_training_array
 
 model_path = '/usr/src/app/saved_model.keras'
-#model_path = '../saved_model.keras'
 
-# The id of my favourite image (from the train sample)
-image_id = 1
+# Number of images from train and test datasets insearted into the table
+n_train_images = 10
+n_test_images = 5
+# The id of my favourite image
+image_id = n_train_images
 
 # Connection parameters
 host = 'db'
@@ -43,10 +45,11 @@ except psycopg2.Error:
 else:
     (x_train, y_train), (x_test, y_test) = keras.datasets.mnist.load_data()
 
-    insert_images(cursor, input_table, x_train[image_id - 1: image_id], y_train[image_id - 1: image_id],
-                  is_train=True)
+    insert_images(cursor, input_table, x_train[:n_train_images], y_train[:n_train_images], is_train=True)
+    insert_images(cursor, input_table, x_test[:n_test_images], y_test[:n_test_images], is_train=False)
+
     image_binary, label, is_train = get_image_from_id(cursor, input_table, image_id)
-    print("True label that is stored in the input table: ", label)
+    print(f"Image with id {image_id} has true label (that is stored in the input table): ", label)
     conn.commit()
 
 # Creating the predictions table, and inserting the prediction there
@@ -64,5 +67,5 @@ else:
     prediction = np.argmax(model.predict(image), axis=1)
     insert_prediction(cursor, predictions_table, image_id, prediction)
     retrieved_prediction = get_prediction_from_image_id(cursor, predictions_table, image_id)
-    print("Prediction stored in the predictions table: ", retrieved_prediction)
+    print(f"Image with id {image_id} has a predicted label (stored in the predictions table): ", retrieved_prediction)
     conn.commit()

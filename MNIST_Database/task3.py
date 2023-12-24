@@ -6,7 +6,7 @@ from mnist_database_utils import create_table, insert_images, show_image_by_id
 n_train_images = 10
 n_test_images = 5
 # The id of my favourite image
-image_id = 1
+image_id = n_train_images
 
 # Connection parameters
 host = 'localhost'
