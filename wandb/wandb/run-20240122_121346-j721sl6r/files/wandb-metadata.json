@@ -1,0 +1,54 @@
+{
+    "os": "Linux-6.4.16-linuxkit-x86_64-with-glibc2.35",
+    "python": "3.11.0rc1",
+    "heartbeatAt": "2024-01-22T12:13:47.068815",
+    "startedAt": "2024-01-22T12:13:46.306530",
+    "docker": null,
+    "cuda": null,
+    "args": [],
+    "state": "running",
+    "program": "/app/main_wab.py",
+    "codePathLocal": "main_wab.py",
+    "codePath": "main_wab.py",
+    "host": "73f50ecb4415",
+    "username": "root",
+    "executable": "/usr/bin/python",
+    "cpu_count": 4,
+    "cpu_count_logical": 4,
+    "cpu_freq": {
+        "current": 3408.052,
+        "min": 0.0,
+        "max": 0.0
+    },
+    "cpu_freq_per_core": [
+        {
+            "current": 3408.052,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 3408.052,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 3408.052,
+            "min": 0.0,
+            "max": 0.0
+        },
+        {
+            "current": 3408.052,
+            "min": 0.0,
+            "max": 0.0
+        }
+    ],
+    "disk": {
+        "/": {
+            "total": 58.367008209228516,
+            "used": 14.291511535644531
+        }
+    },
+    "memory": {
+        "total": 3.830516815185547
+    }
+}
