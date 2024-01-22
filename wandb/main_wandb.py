@@ -28,14 +28,22 @@ from prediction import predict_classes
 # Initialize W&B
 wandb.init(project="cnn_digits", config={"metric_to_optimize": "accuracy"})
 
+# Define parameters for the experiments
+
+wandb.config.epochs = 5
+wandb.config.batch_size = 64
+wandb.config.num_filters = 32
+wandb.config.num_layers = 2
+wandb.config.activation_fun = "relu"
+
 # Data import
 (x_train, y_train), (x_test, y_test) = get_data()
 
 # Model creation
-model = create_model()
+model = create_model(activation_fun = wandb.config.activation_fun, num_filters = wandb.config.num_filters, num_layers=wandb.config.num_layers)
 
 # Model training
-train_model(model, x_train, y_train)
+train_model(model, x_train, y_train, batch_size = wandb.config.batch_size, epochs=wandb.config.epochs)
 
 # Save the entire model to a keras file
 file_name = "saved_model.keras"
@@ -60,4 +68,12 @@ print("Test loss:", score[0])
 print("Test accuracy:", score[1])
 
 # Log the test loss and accuracy
+
 wandb.log({"test_loss": score[0], "test_accuracy": score[1]})
+
+# Log all parameters
+wandb.log({"epochs": wandb.config.epochs})
+wandb.log({"batch_size": wandb.config.batch_size})
+wandb.log({"num_filters": wandb.config.num_filters})
+wandb.log({"num_layers": wandb.config.num_layers})
+wandb.log({"activation_function": wandb.config.activation_fun})

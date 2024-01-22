@@ -5,7 +5,7 @@ WORKDIR /app
 
 COPY requirements.txt .
 COPY entrypoint.sh . 
-COPY main_wab.py .
+COPY main_wandb.py .
 COPY load_and_prepare_data.py .
 COPY neuralnet_architecture.py .
 COPY neuralnet_training.py .
