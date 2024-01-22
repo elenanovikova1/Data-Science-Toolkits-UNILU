@@ -79,7 +79,7 @@ WANDB_TOKEN=XXX
 
 ### entrypoint.sh
 
-Created the file as explained in the Milestone_04 task sheet. It didn't run at first. Had to specify where the script can find the access token. We added the following:
+Created the file as explained in the Milestone_04 task sheet. It didn't run at first. Had to specify where the script can find the access token. We added the following line as the token is saved in the file .env:
 
 ```
 source .env
@@ -97,7 +97,7 @@ To build the container the same command as in Milestone_02 was applied:
 $ docker build -t digits_wandb:1.0 .
 ```
 
-The container was run using a volume that it is possible for the shell script to access the access token in .env:
+The container was run using a volume that the shell script can access the W&B token in .env:
 
 ```
 docker run -v $(pwd):/app/ -it digits_wandb:1.0
@@ -107,6 +107,35 @@ The script ```main_wandb.py```run. The following code was added to execute exper
 
 ### Script main_wandb.py 
 
+Adapted code to log the experiments. Which means that the different functions had to be parameterized such that the parameters can be changed in the main_wandb.py file during training. No new image necessary as we build up a volume, so we can directly change the parameters. The scripts are available in the folder ```wandb```. 
 
+The metrics and parameters then are logged into W&B to track the different experiments, the W&B projects are public under: 
+
+[https://wandb.ai/dsta_unilu/cnn_digits?workspace=user-florian-goldinger](https://wandb.ai/dsta_unilu/cnn_digits?workspace=user-florian-goldinger)
+
+We parameterized the scripts with the following parameters and conducted different experiments:
+
+```
+wandb.config.epochs
+wandb.config.batch_size 
+wandb.config.num_filters 
+wandb.config.num_layers 
+wandb.config.activation_fun 
+```
+
+Accordingly the loss and accuracy was tracked together with all the chosen parameters. With the code below the results have been logged to W&B: 
+
+# Log the test loss and accuracy
+
+wandb.log({"test_loss": score[0], "test_accuracy": score[1]})
+
+# Log all parameters
+wandb.log({"epochs": wandb.config.epochs})
+wandb.log({"batch_size": wandb.config.batch_size})
+wandb.log({"num_filters": wandb.config.num_filters})
+wandb.log({"num_layers": wandb.config.num_layers})
+wandb.log({"activation_function": wandb.config.activation_fun})
+
+As described we have not done any optimization but only tried some different parameters and saved the result. 
 
 
