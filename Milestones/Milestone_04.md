@@ -12,7 +12,7 @@ Given the diversity of parameters involved in these experiments, it can be chall
 
 A metric in machine learning is a quantitative measure used to assess the performance of a model. It provides a summarized numerical evaluation of how well the model performs on a specific task, given a set of parameters.
 
-## What is Precision and Recall? Why is there often a Trade-off between them?
+### What is Precision and Recall? Why is there often a Trade-off between them?
 
 *Precision* is the ratio of true positives to the sum of true positives and false positives. In the example of spam, it measures how many of the emails detected as spam are actually spam. 
 *Recall* is the ratio of true positives to the sum of true positives and false negatives. For spam, it measures on how much of the actual spam I found. Did I detect all of them. 
@@ -23,14 +23,14 @@ For example cancer diagnosis, where the goal is to detect all patients actually 
 
 On the other hand, in the context of spam detection, where the goal is to avoid marking legitimate emails as spam, precision becomes more critical. Accepting a few false negatives (spam emails not detected) may be more tolerable if it means minimizing the number of false positives (legitimate emails incorrectly marked as spam).
 
-## What is AUROC Metric?
+### What is AUROC Metric?
 
 AUROC is the abbreviation for Area Under the Receiver Operating Characteristic curve. 
 
 The Receiver Operating Characteristic curve plots the true Positive rate against the False positive rate in a classification model. It plots the trade-off between TP and FP. 
 The AUROC therefore measures the are under this curve for different thresholds. A higher AUROC value indicates better performance.
 
-## What is a Confusion Matrix?
+### What is a Confusion Matrix?
 
 A confusion matrix is a table used to evaluate the performance of a classification model. 
 In general it compares the actual vs. the predicted class and shows the following:
