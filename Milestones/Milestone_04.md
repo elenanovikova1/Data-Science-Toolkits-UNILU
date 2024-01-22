@@ -136,8 +136,8 @@ wandb.log({"batch_size": wandb.config.batch_size})
 wandb.log({"num_filters": wandb.config.num_filters})
 wandb.log({"num_layers": wandb.config.num_layers})
 wandb.log({"activation_function": wandb.config.activation_fun})
-``
+```
 
-As described we have not done any optimization but only tried some different parameters and saved the result. 
+As described we have not done any optimization but only tried some different parameters and saved the result. Which are now accessible on the W&B platform. 
 
 
