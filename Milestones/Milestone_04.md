@@ -39,3 +39,74 @@ In general it compares the actual vs. the predicted class and shows the followin
 - FP (False Positive)
 - TN (True Negative)
 - FN (False Negative)
+
+## Task 2
+
+In order to execute this task we generated different files in the new folder ```wandb``` containing the following adapted or new files to execute experiments and save them to W&B:
+
+- Adapted python scripts including wandb (```main_wandb.py```)
+- ```Dockerfile``` (including ENTRYPOINT)
+- ```.env``` (where the environment variable $WANDB_TOKEN is stored) -> included .env in .gitignore to not share the token publicly 
+- ```entrypoint.sh```
+- ```requirements.txt``` 
+
+### Dockerfile
+
+Added the shell script entrypoint.sh to access wandb: 
+```COPY entrypoint.sh . ``` 
+
+Set the entrypoint script as executable and run it to access the API of wandb:
+
+```
+RUN chmod +x .entrypoint.sh
+
+ENTRYPOINT ["entrypoint.sh"]
+```
+
+Even that the entrypoint.sh in the container was set executable we got an error message concerning permission rights. We first also had to set the permission rights for the local file before creating the container. Done with the following command: 
+
+```chmod +x entrypoint.sh``
+
+Then it worked. 
+
+### .env
+
+This file contains the environment_variable for the w&b token that the entrypoint is accessing through a volume on the local machine: 
+
+```
+WANDB_TOKEN=XXX
+```
+
+### entrypoint.sh
+
+Created the file as explained in the Milestone_04 task sheet. It didn't run at first. Had to specify where the script can find the access token. We added the following:
+
+```
+source .env
+```
+
+### requirements.txt
+
+The latest version of w&b was added: ```wandb==0.16.2```
+
+### Build and run the container
+
+To build the container the same command as in Milestone_02 was applied: 
+
+```
+$ docker build -t digits_wandb:1.0 .
+```
+
+The container was run using a volume that it is possible for the shell script to access the access token in .env:
+
+```
+docker run -v $(pwd):/app/ -it digits_wandb:1.0
+```
+
+The script ```main_wandb.py```run. The following code was added to execute experiments and save the results in the cloud: 
+
+### Script main_wandb.py 
+
+
+
+
