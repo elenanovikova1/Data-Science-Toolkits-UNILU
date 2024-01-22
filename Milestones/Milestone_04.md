@@ -125,6 +125,7 @@ wandb.config.activation_fun
 
 Accordingly the loss and accuracy was tracked together with all the chosen parameters. With the code below the results have been logged to W&B: 
 
+```
 # Log the test loss and accuracy
 
 wandb.log({"test_loss": score[0], "test_accuracy": score[1]})
@@ -135,6 +136,7 @@ wandb.log({"batch_size": wandb.config.batch_size})
 wandb.log({"num_filters": wandb.config.num_filters})
 wandb.log({"num_layers": wandb.config.num_layers})
 wandb.log({"activation_function": wandb.config.activation_fun})
+``
 
 As described we have not done any optimization but only tried some different parameters and saved the result. 
 
