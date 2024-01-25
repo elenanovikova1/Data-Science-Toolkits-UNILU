@@ -146,8 +146,10 @@ wandb.log({"activation_function": wandb.config.activation_fun})
 
 As described we have not done any optimization but only tried some different parameters and saved the result. Which are now accessible on the W&B platform. 
 
+
+To save the predictions and the ground_truth the following code was added. The numpy arrays are needed for the Task 3, to graphically display and analyse the results:
+
 ```
-To save the predictions and the ground_truth the following code was added. The numpy arrays are needed for the Task 3, to graphically display the results:```
 # Save the ground truth and the predictions for further graphical analysis
 ground_truth = np.argmax(y_test, axis=1)
 predictions = predict_classes(loaded_model, x_test)
