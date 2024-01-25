@@ -167,7 +167,6 @@ artifact.add_file('predictions.npy')
 wandb.log_artifact(artifact)
 ```
 
-### (Optional): Log Git Hash 
 
 
 
