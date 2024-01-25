@@ -57,10 +57,12 @@ wandb.log_artifact(artifact)
 # Load the model from the file
 loaded_model = keras.models.load_model(file_name)
 
-# Prediction of the digit on the first 10 elements of test data
-predicted_class = predict_classes(loaded_model, x_test[0:10])
-print("Predicted Classes:", predicted_class)
-print("True Classes:", np.argmax(y_test[0:10], axis=1))
+# Save the ground truth and the predictions for further graphical analysis 
+ground_truth = np.argmax(y_test, axis=1)
+predictions = predict_classes(loaded_model, x_test)
+
+np.save("ground_truth.npy", ground_truth)
+np.save("predictions.npy", predictions)
 
 # Model evaluation on test data
 score = loaded_model.evaluate(x_test, y_test, verbose=0)
@@ -77,3 +79,5 @@ wandb.log({"batch_size": wandb.config.batch_size})
 wandb.log({"num_filters": wandb.config.num_filters})
 wandb.log({"num_layers": wandb.config.num_layers})
 wandb.log({"activation_function": wandb.config.activation_fun})
+
+wandb.finish()
