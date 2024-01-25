@@ -32,13 +32,19 @@ The AUROC therefore measures the are under this curve for different thresholds. 
 
 ### What is a Confusion Matrix?
 
-A confusion matrix is a table used to evaluate the performance of a classification model. 
-In general it compares the actual vs. the predicted class and shows the following:
+A confusion matrix is a table used in the evaluation of a classification model's performance. It provides an overview of how well a model is performing by comparing the predicted classes to the actual classes. The four main components of a confusion matrix are:
 
-- TP (True Positive)
-- FP (False Positive)
-- TN (True Negative)
-- FN (False Negative)
+True Positives (TP):
+These are the cases where the model correctly identified the positive class.
+
+False Positives (FP):
+These are the cases where the model predicted the positive class, but the true class was actually negative.
+
+True Negatives (TN):
+These are the cases where the model correctly identified the negative class.
+
+False Negatives (FN):
+These are the cases where the model predicted the negative class, but the true class was actually positive.
 
 ## Task 2
 
@@ -65,7 +71,7 @@ ENTRYPOINT ["entrypoint.sh"]
 
 Even that the entrypoint.sh in the container was set executable we got an error message concerning permission rights. We first also had to set the permission rights for the local file before creating the container. Done with the following command: 
 
-```chmod +x entrypoint.sh``
+```chmod +x entrypoint.sh```
 
 Then it worked. 
 
@@ -140,4 +146,22 @@ wandb.log({"activation_function": wandb.config.activation_fun})
 
 As described we have not done any optimization but only tried some different parameters and saved the result. Which are now accessible on the W&B platform. 
 
+```
+To save the predictions and the ground_truth the following code was added. The numpy arrays are needed for the Task 3, to graphically display the results:```
+# Save the ground truth and the predictions for further graphical analysis
+ground_truth = np.argmax(y_test, axis=1)
+predictions = predict_classes(loaded_model, x_test)
+
+np.save("ground_truth.npy", ground_truth)
+np.save("predictions.npy", predictions)
+```
+
+Additionally a log was created for the predictions, saving them as artifact on W&B:
+
+```
+# Log predictions 
+artifact = wandb.Artifact('predictions', type='predictions')
+artifact.add_file('predictions.npy')
+wandb.log_artifact(artifact)
+```
 
