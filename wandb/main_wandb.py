@@ -57,12 +57,17 @@ wandb.log_artifact(artifact)
 # Load the model from the file
 loaded_model = keras.models.load_model(file_name)
 
-# Save the ground truth and the predictions for further graphical analysis 
+# Save the ground truth and the predictions for further graphical analysis
 ground_truth = np.argmax(y_test, axis=1)
 predictions = predict_classes(loaded_model, x_test)
 
 np.save("ground_truth.npy", ground_truth)
 np.save("predictions.npy", predictions)
+
+# Log predictions 
+artifact = wandb.Artifact('predictions', type='predictions')
+artifact.add_file('predictions.npy')
+wandb.log_artifact(artifact)
 
 # Model evaluation on test data
 score = loaded_model.evaluate(x_test, y_test, verbose=0)
@@ -73,7 +78,7 @@ print("Test accuracy:", score[1])
 
 wandb.log({"test_loss": score[0], "test_accuracy": score[1]})
 
-# Log all parameters
+# Log all parameters in wandb
 wandb.log({"epochs": wandb.config.epochs})
 wandb.log({"batch_size": wandb.config.batch_size})
 wandb.log({"num_filters": wandb.config.num_filters})
