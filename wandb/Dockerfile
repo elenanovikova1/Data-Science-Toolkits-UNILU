@@ -15,7 +15,7 @@ COPY prediction.py .
 RUN pip install -r requirements.txt
 
 # Set the entrypoint script as executable
-RUN chmod +x /app/entrypoint.sh
+RUN chmod +x /flask/entrypoint.sh
 
 # Set the entrypoint for running the script
 ENTRYPOINT ["/app/entrypoint.sh"]

@@ -1,0 +1,15 @@
+version: '3'
+services:
+  web:
+    build: .
+    ports:
+     - "5001:5000"
+    depends_on:
+      - db
+  db:
+    image: postgres
+    environment:
+      POSTGRES_PASSWORD: mypassword
+      POSTGRES_DB: milestone_5
+    ports:
+      - "5432:5432"

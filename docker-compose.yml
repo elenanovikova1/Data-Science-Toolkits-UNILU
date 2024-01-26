@@ -17,7 +17,7 @@ services:
       context: .
       dockerfile: MNIST_Database/Dockerfile
     volumes:
-      - ./saved_model.keras:/usr/src/app/saved_model.keras
+      - ./saved_model.keras:/usr/src/flask/saved_model.keras
     depends_on:
       - db
     environment:
