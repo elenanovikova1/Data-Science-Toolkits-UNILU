@@ -3,10 +3,9 @@ import json
 import base64
 from tensorflow import keras
 import numpy as np
-
 from PIL import Image
 
-(x_train, y_train), (x_test, y_test) = keras.datasets.mnist.load_data()
+#(x_train, y_train), (x_test, y_test) = keras.datasets.mnist.load_data()
 
 image_file_name = 'image0.png'
 #first_image = Image.fromarray(x_train[0])
@@ -18,7 +17,6 @@ with open(image_file_name, "rb") as image_file:
 data = {"image": encoded_string}
 
 url = "http://localhost:5001/predict"
-
 
 response = requests.post(url, json=data)
 
