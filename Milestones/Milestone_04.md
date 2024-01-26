@@ -168,5 +168,34 @@ wandb.log_artifact(artifact)
 ```
 
 
+## Task 3
 
+The two python files (corresponding to two sub-tasks) are in the folder "Milestone 4. Task 3". 
 
+### RGB Image
+
+We loaded an (colorful) image `milestone4task3_picture.jpeg`. To get the (3-dimensional) array we simply used the following code:
+
+```
+image = Image.open(image_path)
+image_array = np.array(image)
+```
+
+Then we used numpy to build histograms of the color channels. to get the channels, we simply used:
+
+```
+red_channel = image_array[:,:,0]
+green_channel = image_array[:,:,1]
+blue_channel = image_array[:,:,2]
+```
+
+To build the histograms, we used `plt.hist` (where `plt` is `matplotlib.pyplot`).
+
+### Confusion Matrix
+For the second sub-task we compute the confusion matrix of the ground truth and predictions. We load 'ground_truth.npy' and 'predictions.npy' files (from the 'wandb' folder). We also used utilities from the os package in order to have an os-independent way of loading the data. For example, for ground truth we use the following line in the code:
+
+```
+ground_truth_file_name = os.path.join(os.path.dirname(__file__), '..', 'wandb', 'ground_truth.npy')
+```
+
+To compute the confusion matrix, we simply import the `confusion_matrix` function from `sklearn.metrics`. To represent it in a nice way, we use `matplotlib.pyplot` with `seaborn.heatmap`. It is clearly visible from this matrix that the predictior is very good.
