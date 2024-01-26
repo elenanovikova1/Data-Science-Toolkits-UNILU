@@ -170,6 +170,8 @@ wandb.log_artifact(artifact)
 
 ## Task 3
 
+We somehow forgot that we had to use notebooks for this task, so we first solved them using .py files, and added the notebook only in the very last minute. The notebook is in the folder "Milestone 4. Task 3".
+
 The two python files (corresponding to two sub-tasks) are in the folder "Milestone 4. Task 3". 
 
 ### RGB Image
@@ -197,5 +199,6 @@ For the second sub-task we compute the confusion matrix of the ground truth and 
 ```
 ground_truth_file_name = os.path.join(os.path.dirname(__file__), '..', 'wandb', 'ground_truth.npy')
 ```
+(this only corresponds to the *.py file, not to the notebook).
 
 To compute the confusion matrix, we simply import the `confusion_matrix` function from `sklearn.metrics`. To represent it in a nice way, we use `matplotlib.pyplot` with `seaborn.heatmap`. It is clearly visible from this matrix that the predictior is very good.

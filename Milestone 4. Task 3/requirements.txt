@@ -71,3 +71,4 @@ werkzeug==3.0.1
 wheel==0.38.4
 wrapt==1.14.1
 zipp==3.17.0
+notebook==7.0.7
