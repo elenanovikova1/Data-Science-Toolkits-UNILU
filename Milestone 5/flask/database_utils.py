@@ -14,7 +14,7 @@ def create_table(cursor, table_name):
 def insert_image(cursor, table_name, image_binary, label):
     insert_sql = f"""
     INSERT INTO {table_name} (image_binary, label)
-    VALUES (%s, %s, %s)
+    VALUES (%s, %s)
     """
     cursor.execute(insert_sql, (image_binary, int(label)))
 

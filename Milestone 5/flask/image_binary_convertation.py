@@ -16,7 +16,8 @@ def binary_to_image(binary_data):
     return Image.open(io.BytesIO(binary_data))
 
 def binary_to_training_array(binary_data):
-    array = np.array([np.asarray(binary_to_image(binary_data))])
+    image = binary_to_image(binary_data)
+    array = np.array(image)
     array = array.astype("float32") / 255
     array = np.expand_dims(array, -1)
     return array
