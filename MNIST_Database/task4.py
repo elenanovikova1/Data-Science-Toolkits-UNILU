@@ -5,7 +5,7 @@ from mnist_database_utils import create_table, create_table_with_predictions, in
 from mnist_database_utils import get_image_from_id, get_prediction_from_image_id
 from image_binary_convertation import binary_to_training_array
 
-model_path = '/usr/src/app/saved_model.keras'
+model_path = '/usr/src/flask/saved_model.keras'
 
 # Number of images from train and test datasets insearted into the table
 n_train_images = 10

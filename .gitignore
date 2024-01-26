@@ -6,3 +6,5 @@
 saved_model.h5
 
 saved_model.keras
+
+.env #for token
